@@ -20,7 +20,7 @@ def data_entry():
     if regolare == "Si":
         plurale = plurale()
     if regolare == "No":
-        genere = input("Inserisci il genre della parola:\n")
+        genere = input("Inserisci il genere della parola:\n")
         plurale = input("Inserire il plurale:\n")
 
     c.execute("INSERT INTO Genere VALUES(?, ?, ?)",(name, genere, plurale)) #aggiungi parola e suo genere
@@ -33,9 +33,9 @@ def search_data():
     c.execute("SELECT * FROM Genere WHERE Singolare=(?)", [name])
     row = c.fetchall()
     if len(row) == 0:               #se la lista è vuota(nome non c'è nel database)
-        data_entry()                                    #inserisci nuovi valori
+        data_entry()                #inserisci nuovi valori
     else:
-        print(row[0][2])                                       #altrimenti stampa il genere
+        print(row[0][2])            #altrimenti stampa il genere
 
 def plurale():
     global genere
